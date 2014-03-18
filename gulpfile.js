@@ -1,6 +1,7 @@
-var gulp    = require('gulp');
-var $       = require('gulp-load-plugins')();
-var path    = {
+var fs          = require("fs");
+var gulp        = require('gulp');
+var $           = require('gulp-load-plugins')();
+var path        = {
     development : __dirname + '/development/',
     production  : __dirname + '/production/'
 };
@@ -11,11 +12,18 @@ gulp.task('bower-clean', function () {
     return gulp.src(path.production + 'assets/vendor/*', {read: false})
         .pipe($.clean());
 });
-gulp.task('bower', ['bower-clean'], function () {
-    return $.bowerFiles()
-        .pipe(gulp.dest(path.production + 'assets/vendor'));
-});
 
+gulp.task('bower', ['bower-clean'], function () {
+
+    // Check dependencies bower.json
+    var bowerJson = JSON.parse(fs.readFileSync('bower.json'));
+
+    if(Object.keys(bowerJson.dependencies).length > 0)
+    {
+        return $.bowerFiles()
+            .pipe(gulp.dest(path.production + 'assets/vendor'));
+    }
+});
 
 /******************* HTML *******************/
 gulp.task('html-clean', function () {
@@ -41,7 +49,7 @@ gulp.task('scripts', ['scripts-clean'], function () {
 });
 
 
-/******************* Styles *******************/    // OK
+/******************* Styles *******************/ 
 gulp.task('styles-clean', function () {
     return gulp.src(path.production + 'assets/css/*', {read: false})
         .pipe($.clean());
