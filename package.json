@@ -1,6 +1,12 @@
 {
   "name": "generator-frodev",
   "version": "0.0.1",
+  "repository": "Kristories/frodev",
+  "author": {
+    "name": "Wahyu Kristianto",
+    "email": "w.kristories@gmail.com",
+    "url": "http://wahyukristianto.com"
+  },
   "dependencies": {},
   "devDependencies": {
     "gulp": "~3.5.0",
@@ -16,5 +22,8 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "keywords": [
+    "yeoman-generator"
+  ]
 }
