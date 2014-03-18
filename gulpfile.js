@@ -9,7 +9,7 @@ var path        = {
 
 /******************* Bower *******************/
 gulp.task('bower-clean', function () {
-    return gulp.src(path.production + 'assets/vendor/*', {read: false})
+    gulp.src(path.production + 'assets/vendor/*', {read: false})
         .pipe($.clean());
 });
 
@@ -18,27 +18,30 @@ gulp.task('bower', ['bower-clean'], function () {
     // Check dependencies bower.json
     var bowerJson = JSON.parse(fs.readFileSync('bower.json'));
 
-    if(Object.keys(bowerJson.dependencies).length > 0)
-    {
-        return $.bowerFiles()
-            .pipe(gulp.dest(path.production + 'assets/vendor'));
-    }
+    (Object.keys(bowerJson.dependencies).length > 0)
+        ? $.bowerFiles().pipe(gulp.dest(path.production + 'assets/vendor')) 
+        : true;
 });
 
 /******************* HTML *******************/
 gulp.task('html-clean', function () {
-    return gulp.src(path.production + '*.html', {read: false})
+    gulp.src(path.production + '*.html', {read: false})
         .pipe($.clean());
 });
 
 gulp.task('html', ['html-clean'], function () {
-    
+    gulp.src(path.development + 'pages/*.html')
+        .pipe($.nunjucksRender({
+            base    : path.development + 'base/',
+            widgets : path.development + 'widgets/',
+        }))
+        .pipe(gulp.dest(path.production))
 });
 
 
 /******************* Scripts *******************/
 gulp.task('scripts-clean', function () {
-    return gulp.src(path.production + 'assets/js/*', {read: false})
+    gulp.src(path.production + 'assets/js/*', {read: false})
         .pipe($.clean());
 });
 
@@ -51,7 +54,7 @@ gulp.task('scripts', ['scripts-clean'], function () {
 
 /******************* Styles *******************/ 
 gulp.task('styles-clean', function () {
-    return gulp.src(path.production + 'assets/css/*', {read: false})
+    gulp.src(path.production + 'assets/css/*', {read: false})
         .pipe($.clean());
 });
 
@@ -59,24 +62,22 @@ gulp.task('styles', ['styles-clean'], function () {
     // `style.less` only
     gulp.src(path.development + 'assets/less/style.less')
         .pipe($.less())
-        .pipe($.minifyCss())
+        .pipe($.minifyCss({
+            keepSpecialComments: 0
+        }))
         .pipe(gulp.dest(path.production + 'assets/css'));
 });
 
 
 /******************* Images *******************/
 gulp.task('images-clean', function () {
-    return gulp.src(path.production + 'assets/img/*', {read: false})
+    gulp.src(path.production + 'assets/img/*', {read: false})
         .pipe($.clean());
 });
 
 gulp.task('images', ['images-clean'], function () {
     
 });
-
-
-/******************* Default Task *******************/
-gulp.task('default', ['bower', 'html', 'scripts', 'styles', 'images', 'connect', 'watch']);
 
 
 /******************* Connect *******************/
@@ -109,8 +110,12 @@ gulp.task('watch', function () {
     gulp.watch(path.development + 'assets/img/*', ['images']);
 
     // Watch for changes in `production` folder
-    gulp.watch([path.production + '*'], function(event) {
-        gulp.src(event.path)
+    gulp.watch(path.production + '*', function(event) {
+        return gulp.src(event.path)
             .pipe($.connect.reload());
     });
 });
+
+
+/******************* Default Task *******************/
+gulp.task('default', ['bower', 'html', 'scripts', 'styles', 'images', 'connect', 'watch']);
