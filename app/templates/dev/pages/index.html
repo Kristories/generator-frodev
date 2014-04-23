@@ -1,20 +1,16 @@
 {% extends (base + 'default.html') %}
 
 {% block title %}
-	Index
+	FRODEV (Front-End Development)
 {% endblock %}
 
 {% block header %}
-	{% include (widgets + 'navbar.html') %}
+	{% include (widgets + 'header.html') %}
 {% endblock %}
 
 {% block content %}
-	<h1>Hello!</h1>
+	<h3>Hello!</h3>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, quam, sapiente voluptatem molestiae qui ullam dolorum eum voluptas ipsum laboriosam odio esse reiciendis aspernatur assumenda quas hic quae. Provident, ullam?
 	</p>
-{% endblock %}
-
-{% block footer %}
-	<p class="text-muted">&copy; Wahyu Kristianto</p>
 {% endblock %}

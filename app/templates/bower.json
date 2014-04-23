@@ -1,0 +1,11 @@
+{
+  "name": "<%= _.slugify(appname) %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "bootstrap": "~3.1.1",
+    "fontawesome": "~4.0.3",
+    "ovrly": "~1.0.2",
+    "pttrn": "~1.0.0"
+  }
+}

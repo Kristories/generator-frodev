@@ -1,0 +1,44 @@
+@import '../vendor/bootstrap/less/bootstrap';
+@import '../vendor/ovrly/less/ovrly';
+@import '../vendor/pttrn/less/pttrn';
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin-bottom: 60px;
+}
+
+#header{
+	.pttrn-sarung(purple);
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+
+	small{
+		color: #fff;
+	}
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	.ovrly{
+		min-height: 60px;
+		padding: 30px 0;
+		.ovrly-batik(#333);
+		color: #fff;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+
+		a{
+			color: #fff;
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+		}
+
+		p{
+			margin: 0;
+		}
+	}
+}

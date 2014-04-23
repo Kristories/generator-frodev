@@ -1,11 +1,13 @@
 {
   "name": "generator-frodev",
-  "version": "1.0.1",
-  "repository": "Kristories/frodev",
+  "version": "1.0.2",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "repository": "Kristories/generator-frodev",
   "author": {
     "name": "Wahyu Kristianto",
     "email": "w.kristories@gmail.com",
-    "url": "http://wahyukristianto.com"
+    "url": "https://github.com/Kristories"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -13,6 +15,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "files": [
+    "app"
+  ],
   "keywords": [
     "yeoman-generator"
   ],
@@ -21,20 +26,9 @@
     "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "gulp": "~3.5.0",
-    "gulp-load-plugins": "~0.3.0",
-    "gulp-util": "~2.2.9",
-    "gulp-clean": "~0.2.4",
-    "gulp-connect": "~1.0.0",
-    "gulp-less": "~1.2.3",
-    "gulp-minify-css": "~0.3.0",
-    "gulp-nunjucks-render": "0.0.3",
-    "bower-json": "~0.4.0",
-    "gulp-bower-files": "~0.1.12"
+    "mocha": "*"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
-  },
-  "license": "MIT"
+  }
 }
