@@ -1,4 +1,4 @@
-# FRODEV
+# FRODEV [![Build Status](https://travis-ci.org/Kristories/generator-frodev.svg?branch=master)](https://travis-ci.org/Kristories/generator-frodev)
 
 ## Requirements
 
