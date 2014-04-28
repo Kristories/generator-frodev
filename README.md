@@ -1,12 +1,14 @@
-# generator-frodev [![Build Status](https://secure.travis-ci.org/Kristories/generator-frodev.png?branch=master)](https://travis-ci.org/Kristories/generator-frodev)
+# FRODEV
 
-> [Yeoman](http://yeoman.io) generator
+## Requirements
 
+- [yo](https://github.com/yeoman/yo)
+- [gulp.js](https://github.com/gulpjs/gulp/)
+ 
 
 ## Installation
 
 ```
-$ npm install -g yo
 $ npm install -g generator-frodev
 $ yo frodev
 ```
